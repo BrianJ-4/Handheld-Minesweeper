@@ -50,6 +50,7 @@ public:
     LEDController();
     void playEffect(const char *sequence);
     void setPixel(char index, Color color);
+    void setAllPixels(Color color);
     void turnOffPixel(char index);
     void turnOffAllPixels();
 };

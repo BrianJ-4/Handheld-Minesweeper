@@ -57,6 +57,14 @@ void LEDController::setPixel(char index, Color color) {
     strip.show();
 }
 
+void LEDController::setAllPixels(Color color) {
+    uint32_t colorVal = getColorFromName(color);
+    for (int i = 0; i < strip.numPixels(); i++) {
+        strip.setPixelColor(i, colorVal);
+    }
+    strip.show();
+}
+
 void LEDController::turnOffPixel(char index) {
     int pixelIndex = strchr(indexMapping, index) - indexMapping;
     int row = pixelIndex / COLS;
