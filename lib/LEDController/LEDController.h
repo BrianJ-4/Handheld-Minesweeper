@@ -18,6 +18,8 @@ public:
         PURPLE,
         ORANGE
     };
+    const char *zigZagSequence = "012345BA9876CDEFGHNMLKJIOPQRSZYXWVUabcdeflkjihgmnopqrxwvuts";
+    const char *spiralSequence = "QWXRLKJPVbcdeYSMGFEDCIOUaghijklfZTNH";
 
 private:
     static const uint8_t ROWS = 10;
