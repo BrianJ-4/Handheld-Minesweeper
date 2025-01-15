@@ -180,29 +180,28 @@ void GameController::updateLEDs() {
 
 void GameController::recursiveClear(int row, int col) {
     // Make sure cell is in grid
-    // Serial.println("Row: " + String(row) + " Col: " + String(col));
     if (row < 0 || row >= ROWS || col < 0 || col >= COLS)
         return;
-    // Serial.println("HIT 2: " + grid[row][col].status);
     //Check if cell has already been cleared or flagged
     if (grid[row][col].status == "explored" || grid[row][col].status == "flagged")
         return;
-    // Serial.println("HIT 3");
+    
     markCell(row, col, true);
 
     // Stop if cell has adjacent mines
     if (grid[row][col].adjacentMines != 0) {
         return;
     }
+    
     for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
-            for (int colOffset = -1; colOffset <= 1; colOffset++) {
-                if (rowOffset == 0 && colOffset == 0)
-                    continue;
-                int adjacentRow = row + rowOffset;
-                int adjacentCol = col + colOffset;
-                recursiveClear(adjacentRow, adjacentCol);
-            }
+        for (int colOffset = -1; colOffset <= 1; colOffset++) {
+            if (rowOffset == 0 && colOffset == 0)
+                continue;
+            int adjacentRow = row + rowOffset;
+            int adjacentCol = col + colOffset;
+            recursiveClear(adjacentRow, adjacentCol);
         }
+    }
 }
 
 bool GameController::checkGameWin() {

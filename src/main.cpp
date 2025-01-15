@@ -34,10 +34,4 @@ void setup() {
   game->startGame();
 }
 
-void loop() {
-  int row, col;
-  bool shortPress;
-  game->getInput(row, col, shortPress);
-
-  Serial.println("Row: " + String(row) + " Col: " + String(col) + " Short?: " + String(shortPress));
-}
+void loop() {}
